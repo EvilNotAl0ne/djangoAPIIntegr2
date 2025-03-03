@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'test_create_api' %}">
+        {% csrf_token %}
+        <label for="table">Table name:</label>
+        <input name="table" id="table" type="text"><br>
+        <label for="username">User name:</label>
+        <input name="username" id="username" type="text"><br>
+        <label for="uniq_key">Uniq key:</label>
+        <input name="uniq_key" id="uniq_key" type="text"><br>
+        <input type="submit" value="Создать пользователя">
+    </form>
+    {% if err %}
+    <p>{{err}}</p>
+    {% endif %}
+    {% if response %}
+    <p>{{response}}</p>
+    {% endif %}
+</body>
+</html>
